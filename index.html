@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-lang-key="title"></title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="circle" id="introCircle">
+      <div data-lang-key="title"></div>
+      <button id="startBtn">Click</button>
+    </div>
+
+    <div class="main">
+      <div class="home-button home-btn">
+        <img src="./assets/images/home-btn.png" alt="" />
+      </div>
+      <div class="page-title">
+        <span data-lang-key="title"></span>
+      </div>
+      <!-- nav-container -->
+      <div class="language-container">
+        <div class="english active">E</div>
+        <div class="hindi">H</div>
+        <div class="gujrati">G</div>
+      </div>
+
+      <div class="topics">
+        <div class="topic-wrap topic-1">
+          <div class="num num-1" data-lang-key="num-1"></div>
+
+          <div class="topic-border">
+            <a href="what-to-do.html" class="topic">
+              <span data-lang-key="title-1"></span>
+              <video
+                src="./assets/videos/hpme pg 1.mp4"
+                autoplay
+                muted
+                loop
+              ></video>
+            </a>
+          </div>
+        </div>
+
+        <div class="topic-wrap topic-2">
+          <div class="num num-2" data-lang-key="num-2"></div>
+
+          <div class="topic-border">
+            <a href="what-not-to-do.html" class="topic">
+              <span data-lang-key="title-2"></span>
+              <video
+                src="./assets/videos/home mp 2.mp4"
+                autoplay
+                muted
+                loop
+              ></video>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./assets/js/app.js"></script>
+
+    <script>
+      const introCircle = document.getElementById("introCircle");
+      const main = document.querySelector(".main");
+      const startBtn = document.getElementById("startBtn");
+      const homeBtn = document.querySelector(".home-btn");
+
+      function resetIntroState() {
+        introCircle.style.display = "flex";
+        introCircle.style.opacity = "1";
+        introCircle.style.pointerEvents = "auto";
+        introCircle.classList.remove("expand");
+
+        void introCircle.offsetWidth;
+      }
+
+      function startIntro() {
+        resetIntroState();
+        main.classList.remove("show");
+
+        void main.offsetWidth;
+
+        introCircle.classList.add("expand");
+
+        setTimeout(() => {
+          main.classList.add("show");
+        }, 250);
+
+        setTimeout(() => {
+          introCircle.style.display = "none";
+        }, 1300);
+      }
+
+      startBtn?.addEventListener("click", startIntro);
+
+      homeBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        main.classList.remove("show");
+        resetIntroState();
+      });
+    </script>
+  </body>
+</html>

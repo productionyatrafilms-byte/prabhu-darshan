@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-lang-key="title-2"></title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+
+  <style>
+    .page-title span {
+      font-size: 6vw !important;
+    }
+  </style>
+  <body>
+    <a class="home-button home-btn" href="index.html">
+      <img src="./assets/images/home-btn.png" alt="" />
+    </a>
+    <div class="page-title">
+      <span data-lang-key="title-2"></span>
+    </div>
+    <!-- nav-container -->
+    <div class="language-container">
+      <div class="english active">E</div>
+      <div class="hindi">H</div>
+      <div class="gujrati">G</div>
+    </div>
+
+    <main>
+      <div class="home-container">
+        <div class="left-home-container">
+          <div class="image-swiper-border">
+            <div class="image-swiper swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <video src="./assets/videos/2-1.mp4" autoplay muted alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <video src="./assets/videos/2-2.mp4" autoplay muted alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <video src="./assets/videos/2-3.mp4" autoplay muted alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <video src="./assets/videos/2-4.mp4" autoplay muted alt="" />
+                </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/2-5.mp4" autoplay muted alt="" />
+                  </div>
+                   <div class="swiper-slide">
+                    <video src="./assets/videos/2-6.mp4" autoplay muted alt="" />
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="custom-nav">
+            <button class="custom-prev hidden">
+              <img src="./assets/images/prev-btn.png" alt="" />
+            </button>
+            <button class="custom-next">
+              <img src="./assets/images/next-btn.png" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <div class="right-home-container">
+          <div class="design design-1">
+            <img src="./assets/images/Group 9.png" alt="" />
+          </div>
+          <div class="text-swiper swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="text-box">
+                  <p data-lang-key="slide-2.1"></p>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="text-box">
+                  <p data-lang-key="slide-2.2"></p>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="text-box">
+                  <p data-lang-key="slide-2.3"></p>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="text-box">
+                  <p data-lang-key="slide-2.4"></p>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="text-box">
+                  <p data-lang-key="slide-2.5"></p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="text-box">
+                  <p data-lang-key="slide-2.6"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="design design-1">
+            <img src="./assets/images/Group 8.png" alt="" />
+          </div>
+          <div class="pages">
+            <a
+              href="what-to-do.html"
+              class="page page-1"
+              data-lang-key="num-1"
+            ></a>
+            <a
+              href="what-not-to-do.html"
+              class="page page-2"
+              data-lang-key="num-2"
+            ></a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <!-- <script src="./assets/js/swiper.js"></script> -->
+    <script>
+      const prevBtn = document.querySelector(".custom-prev");
+      const nextBtn = document.querySelector(".custom-next");
+
+      const textSwiper = new Swiper(".text-swiper", {
+        effect: "fade",
+        fadeEffect: {
+          crossFade: true,
+        },
+        speed: 1200,
+        allowTouchMove: false,
+      });
+
+      const imageSwiper = new Swiper(".image-swiper", {
+        effect: "fade",
+        fadeEffect: {
+          crossFade: true,
+        },
+        speed: 1200,
+        allowTouchMove: false,
+        navigation: {
+          prevEl: ".custom-prev",
+          nextEl: ".custom-next",
+        },
+        controller: {
+          control: textSwiper,
+        },
+      });
+
+      textSwiper.controller.control = imageSwiper;
+
+      function updateNavButtons(swiper) {
+        if (swiper.isBeginning) {
+          prevBtn?.classList.add("hidden");
+        } else {
+          prevBtn?.classList.remove("hidden");
+        }
+
+        nextBtn?.classList.remove("hidden");
+      }
+
+      updateNavButtons(imageSwiper);
+
+      imageSwiper.on("slideChange", function () {
+        updateNavButtons(imageSwiper);
+      });
+
+      nextBtn?.addEventListener("click", function (e) {
+        if (imageSwiper.isEnd) {
+          e.preventDefault();
+          window.location.href = "pranam.html";
+        }
+      });
+    </script>
+  </body>
+</html>
