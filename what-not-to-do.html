@@ -10,21 +10,47 @@
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <style>
+      .page-title span {
+        font-size: 6vw !important;
+      }
+
+      /* Pranam link hidden / visible control */
+      .pranam-link {
+        z-index: 99999 !important;
+        cursor: pointer;
+        pointer-events: auto;
+      }
+
+      .pranam-link img,
+      .pranam-link span {
+        pointer-events: none;
+      }
+
+      .pranam-link.hidden {
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      .pranam-link.visible {
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    </style>
   </head>
 
-  <style>
-    .page-title span {
-      font-size: 6vw !important;
-    }
-  </style>
   <body>
     <a class="home-button home-btn" href="index.html">
       <img src="./assets/images/home-btn.png" alt="" />
     </a>
+
     <div class="page-title">
       <span data-lang-key="title-2"></span>
     </div>
-    <!-- nav-container -->
+
     <div class="language-container">
       <div class="english active">E</div>
       <div class="hindi">H</div>
@@ -34,27 +60,74 @@
     <main>
       <div class="home-container">
         <div class="left-home-container">
+          <a href="pranam.html" class="pranam-link hidden">
+            <img src="./assets/images/arowAsset.png" alt="" />
+            <span data-lang-key="pranam"></span>
+          </a>
+
           <div class="image-swiper-border">
             <div class="image-swiper swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <video src="./assets/videos/2-1.mp4" autoplay muted alt="" />
+                  <video
+                    src="./assets/videos/2-6.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                  ></video>
                 </div>
                 <div class="swiper-slide">
-                  <video src="./assets/videos/2-2.mp4" autoplay muted alt="" />
+                  <video
+                    src="./assets/videos/2-1.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                  ></video>
                 </div>
+
                 <div class="swiper-slide">
-                  <video src="./assets/videos/2-3.mp4" autoplay muted alt="" />
+                  <video
+                    src="./assets/videos/2-2.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                  ></video>
                 </div>
+
                 <div class="swiper-slide">
-                  <video src="./assets/videos/2-4.mp4" autoplay muted alt="" />
+                  <video
+                    src="./assets/videos/2-3.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                  ></video>
                 </div>
-                  <div class="swiper-slide">
-                    <video src="./assets/videos/2-5.mp4" autoplay muted alt="" />
-                  </div>
-                   <div class="swiper-slide">
-                    <video src="./assets/videos/2-6.mp4" autoplay muted alt="" />
-                  </div>
+
+
+                <div class="swiper-slide">
+                  <video
+                    src="./assets/videos/2-5.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                  ></video>
+                </div>
+
+                <div class="swiper-slide">
+                  <video
+                    src="./assets/videos/2-4.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                  ></video>
+                </div>
+                
               </div>
             </div>
           </div>
@@ -63,6 +136,7 @@
             <button class="custom-prev hidden">
               <img src="./assets/images/prev-btn.png" alt="" />
             </button>
+
             <button class="custom-next">
               <img src="./assets/images/next-btn.png" alt="" />
             </button>
@@ -73,8 +147,16 @@
           <div class="design design-1">
             <img src="./assets/images/Group 9.png" alt="" />
           </div>
+
           <div class="text-swiper swiper">
             <div class="swiper-wrapper">
+
+               <div class="swiper-slide">
+                <div class="text-box">
+                  <p data-lang-key="slide-2.6"></p>
+                </div>
+              </div>
+
               <div class="swiper-slide">
                 <div class="text-box">
                   <p data-lang-key="slide-2.1"></p>
@@ -95,31 +177,30 @@
 
               <div class="swiper-slide">
                 <div class="text-box">
-                  <p data-lang-key="slide-2.4"></p>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="text-box">
                   <p data-lang-key="slide-2.5"></p>
                 </div>
               </div>
-              <div class="swiper-slide">
+
+               <div class="swiper-slide">
                 <div class="text-box">
-                  <p data-lang-key="slide-2.6"></p>
+                  <p data-lang-key="slide-2.4"></p>
                 </div>
               </div>
+             
             </div>
           </div>
+
           <div class="design design-1">
             <img src="./assets/images/Group 8.png" alt="" />
           </div>
+
           <div class="pages">
             <a
               href="what-to-do.html"
               class="page page-1"
               data-lang-key="num-1"
             ></a>
+
             <a
               href="what-not-to-do.html"
               class="page page-2"
@@ -130,61 +211,196 @@
       </div>
     </main>
 
+    <!-- Audios -->
+    <audio id="homeAudio" src="./assets/audio/pop.mp3" preload="auto"></audio>
+    <audio id="pageAudio" src="./assets/audio/8.mp3" preload="auto"></audio>
+    <audio id="swipeAudio" src="./assets/audio/swipe.mp3" preload="auto"></audio>
+
+    <audio id="engAudio" src="./assets/audio/Eng.mpeg" preload="auto"></audio>
+    <audio id="hinAudio" src="./assets/audio/Hin.mpeg" preload="auto"></audio>
+    <audio id="gujAudio" src="./assets/audio/Guj.mpeg" preload="auto"></audio>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./assets/js/app.js"></script>
-    <!-- <script src="./assets/js/swiper.js"></script> -->
+
     <script>
-      const prevBtn = document.querySelector(".custom-prev");
-      const nextBtn = document.querySelector(".custom-next");
+      document.addEventListener("DOMContentLoaded", () => {
+        const homeBtn = document.querySelector(".home-btn");
 
-      const textSwiper = new Swiper(".text-swiper", {
-        effect: "fade",
-        fadeEffect: {
-          crossFade: true,
-        },
-        speed: 1200,
-        allowTouchMove: false,
-      });
+        const englishBtn = document.querySelector(".english");
+        const hindiBtn = document.querySelector(".hindi");
+        const gujratiBtn = document.querySelector(".gujrati");
 
-      const imageSwiper = new Swiper(".image-swiper", {
-        effect: "fade",
-        fadeEffect: {
-          crossFade: true,
-        },
-        speed: 1200,
-        allowTouchMove: false,
-        navigation: {
-          prevEl: ".custom-prev",
-          nextEl: ".custom-next",
-        },
-        controller: {
-          control: textSwiper,
-        },
-      });
+        const pageBtns = document.querySelectorAll(".page");
+        const prevBtn = document.querySelector(".custom-prev");
+        const nextBtn = document.querySelector(".custom-next");
+        const pranamLink = document.querySelector(".pranam-link");
 
-      textSwiper.controller.control = imageSwiper;
+        const homeAudio = document.getElementById("homeAudio");
+        const pageAudio = document.getElementById("pageAudio");
+        const swipeAudio = document.getElementById("swipeAudio");
 
-      function updateNavButtons(swiper) {
-        if (swiper.isBeginning) {
-          prevBtn?.classList.add("hidden");
-        } else {
-          prevBtn?.classList.remove("hidden");
+        const engAudio = document.getElementById("engAudio");
+        const hinAudio = document.getElementById("hinAudio");
+        const gujAudio = document.getElementById("gujAudio");
+
+        function stopAllAudio() {
+          const audios = [
+            homeAudio,
+            pageAudio,
+            swipeAudio,
+            engAudio,
+            hinAudio,
+            gujAudio,
+          ];
+
+          audios.forEach((audio) => {
+            if (audio) {
+              audio.pause();
+              audio.currentTime = 0;
+            }
+          });
         }
 
-        nextBtn?.classList.remove("hidden");
-      }
+        function playAudio(audio) {
+          if (!audio) return;
 
-      updateNavButtons(imageSwiper);
+          stopAllAudio();
+          audio.currentTime = 0;
 
-      imageSwiper.on("slideChange", function () {
+          const playPromise = audio.play();
+
+          if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+              console.log("Audio not playing. Check file path or browser:", error);
+            });
+          }
+        }
+
+        const textSwiper = new Swiper(".text-swiper", {
+          effect: "fade",
+          fadeEffect: {
+            crossFade: true,
+          },
+          speed: 1200,
+          allowTouchMove: false,
+        });
+
+        const imageSwiper = new Swiper(".image-swiper", {
+          effect: "fade",
+          fadeEffect: {
+            crossFade: true,
+          },
+          speed: 1200,
+          allowTouchMove: false,
+          navigation: {
+            prevEl: ".custom-prev",
+            nextEl: ".custom-next",
+          },
+          controller: {
+            control: textSwiper,
+          },
+        });
+
+        textSwiper.controller.control = imageSwiper;
+
+        function showPranamLink() {
+          pranamLink?.classList.remove("hidden");
+          pranamLink?.classList.add("visible");
+        }
+
+        function hidePranamLink() {
+          pranamLink?.classList.remove("visible");
+          pranamLink?.classList.add("hidden");
+        }
+
+        function updateNavButtons(swiper) {
+          if (swiper.isBeginning) {
+            prevBtn?.classList.add("hidden");
+          } else {
+            prevBtn?.classList.remove("hidden");
+          }
+
+          if (swiper.isEnd) {
+            nextBtn?.classList.add("hidden");
+            showPranamLink();
+          } else {
+            nextBtn?.classList.remove("hidden");
+            hidePranamLink();
+          }
+        }
+
         updateNavButtons(imageSwiper);
-      });
 
-      nextBtn?.addEventListener("click", function (e) {
-        if (imageSwiper.isEnd) {
+        imageSwiper.on("slideChange", function () {
+          updateNavButtons(imageSwiper);
+        });
+
+        imageSwiper.on("reachEnd", function () {
+          updateNavButtons(imageSwiper);
+        });
+
+        imageSwiper.on("fromEdge", function () {
+          updateNavButtons(imageSwiper);
+        });
+
+        homeBtn?.addEventListener("click", function (e) {
           e.preventDefault();
-          window.location.href = "pranam.html";
-        }
+
+          playAudio(homeAudio);
+
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+
+        pageBtns.forEach((pageBtn) => {
+          pageBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            playAudio(pageAudio);
+
+            setTimeout(() => {
+              window.location.href = this.href;
+            }, 600);
+          });
+        });
+
+        prevBtn?.addEventListener("click", () => {
+          playAudio(swipeAudio);
+        });
+
+        nextBtn?.addEventListener("click", () => {
+          playAudio(swipeAudio);
+        });
+
+        pranamLink?.addEventListener(
+          "click",
+          function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+
+            playAudio(swipeAudio);
+
+            setTimeout(() => {
+              window.location.href = this.href;
+            }, 600);
+          },
+          true
+        );
+
+        englishBtn?.addEventListener("click", () => {
+          playAudio(engAudio);
+        });
+
+        hindiBtn?.addEventListener("click", () => {
+          playAudio(hinAudio);
+        });
+
+        gujratiBtn?.addEventListener("click", () => {
+          playAudio(gujAudio);
+        });
       });
     </script>
   </body>
