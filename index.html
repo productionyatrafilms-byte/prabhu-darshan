@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-lang-key="title"></title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="circle" id="introCircle">
+      <div data-lang-key="title"></div>
+      <button id="startBtn">Click</button>
+    </div>
+
+    <div class="main">
+      <div class="home-button home-btn">
+        <img src="./assets/images/home-btn.png" alt="" />
+      </div>
+
+      <div class="page-title">
+        <span data-lang-key="title"></span>
+      </div>
+
+      <div class="language-container">
+        <div class="english active">E</div>
+        <div class="hindi">H</div>
+        <div class="gujrati">G</div>
+      </div>
+
+      <div class="topics">
+        <div class="topic-wrap topic-1">
+          <div class="num num-1" data-lang-key="num-1"></div>
+
+          <div class="topic-border">
+            <a href="what-to-do.html" class="topic">
+              <span data-lang-key="title-1"></span>
+              <video
+                src="./assets/videos/hpme pg 1.mp4"
+                autoplay
+                muted
+                loop
+              ></video>
+            </a>
+          </div>
+        </div>
+
+        <div class="topic-wrap topic-2">
+          <div class="num num-2" data-lang-key="num-2"></div>
+
+          <div class="topic-border">
+            <a href="what-not-to-do.html" class="topic">
+              <span data-lang-key="title-2"></span>
+              <video
+                src="./assets/videos/home mp 2.mp4"
+                autoplay
+                muted
+                loop
+              ></video>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audios -->
+    <audio id="startAudio" src="./assets/audio/2.mp3"></audio>
+    <audio id="homeAudio" src="./assets/audio/pop.mp3"></audio>
+    <audio id="topicAudio" src="./assets/audio/8.mp3"></audio>
+
+    <audio id="engAudio" src="./assets/audio/Eng.mpeg"></audio>
+    <audio id="hinAudio" src="./assets/audio/Hin.mpeg"></audio>
+    <audio id="gujAudio" src="./assets/audio/Guj.mpeg"></audio>
+
+    <script src="./assets/js/app.js"></script>
+
+    <script>
+      const introCircle = document.getElementById("introCircle");
+      const main = document.querySelector(".main");
+      const startBtn = document.getElementById("startBtn");
+      const homeBtn = document.querySelector(".home-btn");
+
+      const topic1 = document.querySelector(".topic-1 a");
+      const topic2 = document.querySelector(".topic-2 a");
+
+      const englishBtn = document.querySelector(".english");
+      const hindiBtn = document.querySelector(".hindi");
+      const gujratiBtn = document.querySelector(".gujrati");
+
+      const startAudio = document.getElementById("startAudio");
+      const homeAudio = document.getElementById("homeAudio");
+      const topicAudio = document.getElementById("topicAudio");
+
+      const engAudio = document.getElementById("engAudio");
+      const hinAudio = document.getElementById("hinAudio");
+      const gujAudio = document.getElementById("gujAudio");
+
+      function playAudio(audio) {
+        if (!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+      }
+
+      function resetIntroState() {
+        introCircle.style.display = "flex";
+        introCircle.style.opacity = "1";
+        introCircle.style.pointerEvents = "auto";
+        introCircle.classList.remove("expand");
+
+        void introCircle.offsetWidth;
+      }
+
+      function startIntro() {
+        playAudio(startAudio);
+
+        resetIntroState();
+        main.classList.remove("show");
+
+        void main.offsetWidth;
+
+        introCircle.classList.add("expand");
+
+        setTimeout(() => {
+          main.classList.add("show");
+        }, 250);
+
+        setTimeout(() => {
+          introCircle.style.display = "none";
+        }, 1300);
+      }
+
+      startBtn?.addEventListener("click", startIntro);
+
+      homeBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        playAudio(homeAudio);
+
+        main.classList.remove("show");
+        resetIntroState();
+      });
+
+      topic1?.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        playAudio(topicAudio);
+
+        setTimeout(() => {
+          window.location.href = topic1.href;
+        }, 500);
+      });
+
+      topic2?.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        playAudio(topicAudio);
+
+        setTimeout(() => {
+          window.location.href = topic2.href;
+        }, 500);
+      });
+
+      englishBtn?.addEventListener("click", () => {
+        playAudio(engAudio);
+      });
+
+      hindiBtn?.addEventListener("click", () => {
+        playAudio(hinAudio);
+      });
+
+      gujratiBtn?.addEventListener("click", () => {
+        playAudio(gujAudio);
+      });
+    </script>
+  </body>
+</html>
