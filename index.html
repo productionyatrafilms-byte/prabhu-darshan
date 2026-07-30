@@ -1,168 +1,172 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-lang-key="title"></title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
 
-  <body>
-    <div class="circle" id="introCircle">
-      <div data-lang-key="title"></div>
-      <button id="startBtn">Click</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-lang-key="title"></title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+  <div class="circle" id="introCircle">
+    <div data-lang-key="title"></div>
+    <button id="startBtn">Click</button>
+  </div>
+
+  <div class="language-container">
+    <div class="english active">E</div>
+    <div class="hindi">H</div>
+    <div class="gujrati">G</div>
+  </div>
+
+  <div class="main" style="">
+    <div class="home-button home-btn">
+      <img src="./assets/images/home-btn.png" alt="" />
     </div>
 
-    <div class="main">
-      <div class="home-button home-btn">
-        <img src="./assets/images/home-btn.png" alt="" />
-      </div>
-
-      <div class="page-title">
-        <span data-lang-key="title"></span>
-      </div>
-
-      <div class="language-container">
-        <div class="english active">E</div>
-        <div class="hindi">H</div>
-        <div class="gujrati">G</div>
-      </div>
-
-      <div class="topics">
-        <div class="topic-wrap topic-1">
-          <div class="num num-1" data-lang-key="num-1"></div>
-
-          <div class="topic-border">
-            <a href="what-to-do.html" class="topic">
-             
-              <img src="./assets/images/H1.png" alt="">
-            </a>
-          </div>
-           <span data-lang-key="title-1"></span>
-        </div>
-
-        <div class="topic-wrap topic-2">
-          <div class="num num-2" data-lang-key="num-2"></div>
-
-          <div class="topic-border">
-            <a href="what-not-to-do.html" class="topic">
-            
-             <img src="./assets/images/H2.png" alt="">
-            </a>
-          </div>
-            <span data-lang-key="title-2"></span>
-        </div>
-      </div>
+    <div class="page-title">
+      <span data-lang-key="title"></span>
     </div>
 
-    <!-- Audios -->
-    <audio id="startAudio" src="./assets/audio/2.mp3"></audio>
-    <audio id="homeAudio" src="./assets/audio/pop.mp3"></audio>
-    <audio id="topicAudio" src="./assets/audio/8.mp3"></audio>
 
-    <audio id="engAudio" src="./assets/audio/Eng.mpeg"></audio>
-    <audio id="hinAudio" src="./assets/audio/Hin.mpeg"></audio>
-    <audio id="gujAudio" src="./assets/audio/Guj.mpeg"></audio>
 
-    <script src="./assets/js/app.js"></script>
+    <div class="topics">
+      <div class="topic-wrap topic-1">
+        <div class="num num-1" data-lang-key="num-1"></div>
 
-    <script>
-      const introCircle = document.getElementById("introCircle");
-      const main = document.querySelector(".main");
-      const startBtn = document.getElementById("startBtn");
-      const homeBtn = document.querySelector(".home-btn");
+        <div class="topic-border">
+          <a href="what-to-do.html" class="topic">
 
-      const topic1 = document.querySelector(".topic-1 a");
-      const topic2 = document.querySelector(".topic-2 a");
+            <img src="./assets/images/H1.png" alt="">
+          </a>
+        </div>
+        <span data-lang-key="title-1"></span>
+      </div>
 
-      const englishBtn = document.querySelector(".english");
-      const hindiBtn = document.querySelector(".hindi");
-      const gujratiBtn = document.querySelector(".gujrati");
+      <div class="topic-wrap topic-2">
+        <div class="num num-2" data-lang-key="num-2"></div>
 
-      const startAudio = document.getElementById("startAudio");
-      const homeAudio = document.getElementById("homeAudio");
-      const topicAudio = document.getElementById("topicAudio");
+        <div class="topic-border">
+          <a href="what-not-to-do.html" class="topic">
 
-      const engAudio = document.getElementById("engAudio");
-      const hinAudio = document.getElementById("hinAudio");
-      const gujAudio = document.getElementById("gujAudio");
+            <img src="./assets/images/H2.png" alt="">
+          </a>
+        </div>
+        <span data-lang-key="title-2"></span>
+      </div>
+    </div>
+  </div>
 
-      function playAudio(audio) {
-        if (!audio) return;
-        audio.currentTime = 0;
-        audio.play();
-      }
+  <!-- Audios -->
+  <audio id="startAudio" src="./assets/audio/2.mp3"></audio>
+  <audio id="homeAudio" src="./assets/audio/pop.mp3"></audio>
+  <audio id="topicAudio" src="./assets/audio/8.mp3"></audio>
 
-      function resetIntroState() {
-        introCircle.style.display = "flex";
-        introCircle.style.opacity = "1";
-        introCircle.style.pointerEvents = "auto";
-        introCircle.classList.remove("expand");
+  <audio id="engAudio" src="./assets/audio/Eng.mpeg"></audio>
+  <audio id="hinAudio" src="./assets/audio/Hin.mpeg"></audio>
+  <audio id="gujAudio" src="./assets/audio/Guj.mpeg"></audio>
 
-        void introCircle.offsetWidth;
-      }
+  <script src="./assets/js/app.js"></script>
 
-      function startIntro() {
-        playAudio(startAudio);
+  <script>
+    const introCircle = document.getElementById("introCircle");
+    const main = document.querySelector(".main");
+    const startBtn = document.getElementById("startBtn");
+    const homeBtn = document.querySelector(".home-btn");
 
-        resetIntroState();
-        main.classList.remove("show");
+    const topic1 = document.querySelector(".topic-1 a");
+    const topic2 = document.querySelector(".topic-2 a");
 
-        void main.offsetWidth;
+    const englishBtn = document.querySelector(".english");
+    const hindiBtn = document.querySelector(".hindi");
+    const gujratiBtn = document.querySelector(".gujrati");
 
-        introCircle.classList.add("expand");
+    const startAudio = document.getElementById("startAudio");
+    const homeAudio = document.getElementById("homeAudio");
+    const topicAudio = document.getElementById("topicAudio");
 
-        setTimeout(() => {
-          main.classList.add("show");
-        }, 250);
+    const engAudio = document.getElementById("engAudio");
+    const hinAudio = document.getElementById("hinAudio");
+    const gujAudio = document.getElementById("gujAudio");
 
-        setTimeout(() => {
-          introCircle.style.display = "none";
-        }, 1300);
-      }
+    function playAudio(audio) {
+      if (!audio) return;
+      audio.currentTime = 0;
+      audio.play();
+    }
 
-      startBtn?.addEventListener("click", startIntro);
+    function resetIntroState() {
+      introCircle.style.display = "flex";
+      introCircle.style.opacity = "1";
+      introCircle.style.pointerEvents = "auto";
+      introCircle.classList.remove("expand");
 
-      homeBtn?.addEventListener("click", (e) => {
-        e.preventDefault();
+      void introCircle.offsetWidth;
+    }
 
-        playAudio(homeAudio);
+    function startIntro() {
+      playAudio(startAudio);
 
-        main.classList.remove("show");
-        resetIntroState();
-      });
+      resetIntroState();
+      main.classList.remove("show");
 
-      topic1?.addEventListener("click", (e) => {
-        e.preventDefault();
+      void main.offsetWidth;
 
-        playAudio(topicAudio);
+      introCircle.classList.add("expand");
 
-        setTimeout(() => {
-          window.location.href = topic1.href;
-        }, 500);
-      });
+      setTimeout(() => {
+        main.classList.add("show");
+      }, 250);
 
-      topic2?.addEventListener("click", (e) => {
-        e.preventDefault();
+      setTimeout(() => {
+        introCircle.style.display = "none";
+      }, 1300);
+    }
 
-        playAudio(topicAudio);
+    startBtn?.addEventListener("click", startIntro);
 
-        setTimeout(() => {
-          window.location.href = topic2.href;
-        }, 500);
-      });
+    homeBtn?.addEventListener("click", (e) => {
+      e.preventDefault();
 
-      englishBtn?.addEventListener("click", () => {
-        playAudio(engAudio);
-      });
+      playAudio(homeAudio);
 
-      hindiBtn?.addEventListener("click", () => {
-        playAudio(hinAudio);
-      });
+      main.classList.remove("show");
+      resetIntroState();
+    });
 
-      gujratiBtn?.addEventListener("click", () => {
-        playAudio(gujAudio);
-      });
-    </script>
-  </body>
+    topic1?.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      playAudio(topicAudio);
+
+      setTimeout(() => {
+        window.location.href = topic1.href;
+      }, 500);
+    });
+
+    topic2?.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      playAudio(topicAudio);
+
+      setTimeout(() => {
+        window.location.href = topic2.href;
+      }, 500);
+    });
+
+    englishBtn?.addEventListener("click", () => {
+      playAudio(engAudio);
+    });
+
+    hindiBtn?.addEventListener("click", () => {
+      playAudio(hinAudio);
+    });
+
+    gujratiBtn?.addEventListener("click", () => {
+      playAudio(gujAudio);
+    });
+  </script>
+</body>
+
 </html>

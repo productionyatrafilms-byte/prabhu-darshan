@@ -149,7 +149,7 @@ body[data-lang="hi"] .page-title span, body[data-lang="gu"] .page-title span{
   background-color: transparent;
   border-radius: 50vw;
   pointer-events: auto;
-  z-index: 1000;
+  z-index: 999999;
 }
 
 .language-container div {
@@ -343,7 +343,7 @@ body[data-lang="gu"] .topics .topic span, .num {
   justify-content: center;
   align-items: center;
   gap: 1vw;
-  z-index: 99999;
+  z-index: 999;
   overflow: visible;
   background: transparent;
   transition: opacity 1s ease;
