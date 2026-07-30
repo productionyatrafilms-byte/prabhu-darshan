@@ -396,6 +396,11 @@ body[data-lang="gu"] .topics .topic span, .num {
   transition: opacity 0.25s ease;
 }
 
+body[data-lang="hi"] .circle div, body[data-lang="gu"] .circle div{
+   -webkit-text-stroke: 0.1vw transparent;
+}
+
+
 .circle button {
   position: relative;
   overflow: hidden;
