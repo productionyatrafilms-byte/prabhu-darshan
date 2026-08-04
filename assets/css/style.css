@@ -558,7 +558,7 @@ main {
 
 .custom-nav {
   position: absolute;
-  bottom: 45%;
+  bottom: 42%;
   transform: translateY(-50%);
   display: flex;
   gap: 40vw;
