@@ -68,29 +68,29 @@
           <div class="image-swiper swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <video src="./assets/videos/2-1.mp4" autoplay muted playsinline loop></video>
+                <video src="./assets/videos/2-1.mp4" muted playsinline loop></video>
               </div>
               <div class="swiper-slide">
-                <video src="./assets/videos/2-2.mp4" autoplay muted playsinline loop></video>
-              </div>
-
-              <div class="swiper-slide">
-                <video src="./assets/videos/2-3.mp4" autoplay muted playsinline loop></video>
+                <video src="./assets/videos/2-2.mp4" muted playsinline loop></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/2-4.mp4" autoplay muted playsinline loop></video>
-              </div>
-              <div class="swiper-slide">
-                <video src="./assets/videos/2-5.mp4" autoplay muted loop playsinline></video>
+                <video src="./assets/videos/2-3.mp4" muted playsinline loop></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/2-6.mp4" autoplay muted loop playsinline></video>
+                <video src="./assets/videos/2-4.mp4" muted playsinline loop></video>
+              </div>
+              <div class="swiper-slide">
+                <video src="./assets/videos/2-5.mp4" muted loop playsinline></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/2-7.mp4" autoplay muted loop playsinline></video>
+                <video src="./assets/videos/2-6.mp4" muted loop playsinline></video>
+              </div>
+
+              <div class="swiper-slide">
+                <video src="./assets/videos/2-7.mp4" muted loop playsinline></video>
               </div>
 
             </div>
@@ -264,6 +264,77 @@
       });
 
       textSwiper.controller.control = imageSwiper;
+
+      // ---- Play video only for the currently visible/active slide ----
+      function controlVideoPlayback(swiper) {
+        const slides = swiper.slides;
+
+        slides.forEach((slide, index) => {
+          const video = slide.querySelector("video");
+          if (!video) return;
+
+          if (index === swiper.activeIndex) {
+            // Active slide -> play its video
+            if (video.paused) {
+              const playPromise = video.play();
+              if (playPromise !== undefined) {
+                playPromise.catch((error) => {
+                  console.log("Video not playing. Check file path or browser:", error);
+                });
+              }
+            }
+          } else {
+            // Inactive slide -> pause and reset its video
+            if (!video.paused) {
+              video.pause();
+            }
+            video.currentTime = 0;
+          }
+        });
+      }
+
+      // Extra safety: pause any video that scrolls out of the viewport
+      // (covers cases where the page itself is scrollable and the swiper
+      // is not the only thing controlling visibility)
+      const videoVisibilityObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+            const slide = video.closest(".swiper-slide");
+            const isActiveSlide = slide && slide.classList.contains("swiper-slide-active");
+
+            if (entry.isIntersecting && isActiveSlide) {
+              if (video.paused) {
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                  playPromise.catch(() => {});
+                }
+              }
+            } else {
+              if (!video.paused) {
+                video.pause();
+              }
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+
+      document.querySelectorAll(".image-swiper video").forEach((video) => {
+        videoVisibilityObserver.observe(video);
+      });
+
+      // Run once on load for the initial active slide
+      controlVideoPlayback(imageSwiper);
+
+      imageSwiper.on("slideChange", function () {
+        controlVideoPlayback(imageSwiper);
+      });
+
+      imageSwiper.on("slideChangeTransitionEnd", function () {
+        controlVideoPlayback(imageSwiper);
+      });
+      // ---- End video visibility control ----
 
       function showPranamLink() {
         pranamLink?.classList.remove("hidden");

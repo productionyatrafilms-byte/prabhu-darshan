@@ -38,23 +38,23 @@
             <div class="image-swiper swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <video src="./assets/videos/1-1.mp4" autoplay muted loop></video>
+                  <video src="./assets/videos/1-1.mp4" muted loop playsinline></video>
                 </div>
 
                 <div class="swiper-slide">
-                  <video src="./assets/videos/1-2.mp4" autoplay muted loop></video>
+                  <video src="./assets/videos/1-2.mp4" muted loop playsinline></video>
                 </div>
 
                 <div class="swiper-slide">
-                  <video src="./assets/videos/1-3.mp4" autoplay muted loop></video>
+                  <video src="./assets/videos/1-3.mp4" muted loop playsinline></video>
                 </div>
 
                 <div class="swiper-slide">
-                  <video src="./assets/videos/1-4.mp4" autoplay muted loop></video>
+                  <video src="./assets/videos/1-4.mp4" muted loop playsinline></video>
                 </div>
 
                 <div class="swiper-slide">
-                  <video src="./assets/videos/1-5.mp4" autoplay muted loop></video>
+                  <video src="./assets/videos/1-5.mp4" muted loop playsinline></video>
                 </div>
               </div>
             </div>
@@ -241,6 +241,88 @@
         gujratiBtn?.addEventListener("click", () => {
           playAudio(gujAudio);
         });
+
+        // ---- Play video only for the currently visible/active slide ----
+        // Note: the image-swiper instance itself is initialized in an
+        // external script (app.js / swiper.js), so this logic works purely
+        // off the DOM (the "swiper-slide-active" class Swiper applies) plus
+        // an IntersectionObserver, rather than a local Swiper reference.
+
+        const imageSlides = document.querySelectorAll(".image-swiper .swiper-slide");
+        const imageWrapper = document.querySelector(".image-swiper .swiper-wrapper");
+
+        function isSlideInViewport(slide) {
+          const rect = slide.getBoundingClientRect();
+          return (
+            rect.bottom > 0 &&
+            rect.right > 0 &&
+            rect.top < (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.left < (window.innerWidth || document.documentElement.clientWidth)
+          );
+        }
+
+        function updateVideoPlayback() {
+          imageSlides.forEach((slide) => {
+            const video = slide.querySelector("video");
+            if (!video) return;
+
+            const isActiveSlide = slide.classList.contains("swiper-slide-active");
+            const isVisible = isActiveSlide && isSlideInViewport(slide);
+
+            if (isVisible) {
+              if (video.paused) {
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                  playPromise.catch((error) => {
+                    console.log("Video not playing. Check file path or browser:", error);
+                  });
+                }
+              }
+            } else {
+              if (!video.paused) {
+                video.pause();
+              }
+              video.currentTime = 0;
+            }
+          });
+        }
+
+        // Re-check whenever Swiper toggles the active-slide class
+        if (imageWrapper) {
+          const slideClassObserver = new MutationObserver(() => {
+            updateVideoPlayback();
+          });
+
+          imageSlides.forEach((slide) => {
+            slideClassObserver.observe(slide, {
+              attributes: true,
+              attributeFilter: ["class"],
+            });
+          });
+        }
+
+        // Re-check on scroll/resize in case the swiper scrolls out of view
+        window.addEventListener("scroll", updateVideoPlayback, { passive: true });
+        window.addEventListener("resize", updateVideoPlayback);
+
+        // Extra safety net: IntersectionObserver per video
+        const videoVisibilityObserver = new IntersectionObserver(
+          () => {
+            updateVideoPlayback();
+          },
+          { threshold: 0.25 }
+        );
+
+        imageSlides.forEach((slide) => {
+          const video = slide.querySelector("video");
+          if (video) {
+            videoVisibilityObserver.observe(video);
+          }
+        });
+
+        // Run once on load for the initial active slide
+        updateVideoPlayback();
+        // ---- End video visibility control ----
       });
     </script>
   </body>
