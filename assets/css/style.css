@@ -88,6 +88,11 @@ body.page-fade-out {
   opacity: 0;
 }
 
+/* GLOBAL VIDEO CENTERING */
+video {
+  object-position: center center;
+}
+
 .home-btn {
   position: fixed;
   top: 2.5vw;
@@ -242,7 +247,9 @@ body[data-lang="hi"] .page-title span, body[data-lang="gu"] .page-title span{
   left: 0.5vw;
   right: 0.5vw;
   bottom: 0.5vw;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   overflow: hidden;
 
@@ -257,11 +264,12 @@ body[data-lang="hi"] .page-title span, body[data-lang="gu"] .page-title span{
   mask-size: 100% 100%;
 }
 
-.topics .topic img {
+.topics .topic video {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
+  object-position: center center;
 }
 
 
@@ -335,8 +343,8 @@ body[data-lang="gu"] .topics .topic span, .num {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 40vw;
-  height: 40vw;
+  width: 70vw;
+  height: 70vw;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -361,11 +369,11 @@ body[data-lang="gu"] .topics .topic span, .num {
       #ffe2a2 100%);
   -webkit-mask:
     linear-gradient(#000 0 0),
-    url("../images/mask-image.png") center / 40vw 40vw no-repeat;
+    url("../images/mask-image.png") center / 100vw 100vw no-repeat;
   -webkit-mask-composite: xor;
   mask:
     linear-gradient(#000 0 0),
-    url("../images/mask-image.png") center / 40vw 40vw no-repeat;
+    url("../images/mask-image.png") center / 100vw 100vw no-repeat;
   mask-composite: exclude;
   transition:
     -webkit-mask-size 1.3s cubic-bezier(0.22, 1, 0.36, 1),
@@ -384,20 +392,49 @@ body[data-lang="gu"] .topics .topic span, .num {
   mask-composite: exclude;
 }
 
+.circle img{
+  position: absolute;
+  bottom: 11vw;
+  left: 50%;
+  transform:translateX(-50%);
+  width: 23vw;
+}
+
 .circle div[data-lang-key="title"] {
+  position: absolute;
+  width: auto;
+  height: 10vw;
+  bottom:15vw;
+ z-index: 9999;
+ cursor: pointer;
   font-size: 7vw;
+  border: 0.15vw solid white;
+  border-radius: 10vw;
   text-align: center;
   color: #802922;
   -webkit-text-stroke: 0.1vw white;
   font-family: "BerkshireSwash";
-  width: 80%;
+  padding: 0.5vw 4vw;
   line-height: 1;
   font-weight: bolder !important;
   transition: opacity 0.25s ease;
+  background-color: rgba(255, 255, 255, 0.392);
+    backdrop-filter: blur(0.05vw);
+  -webkit-backdrop-filter: blur(0.05);
+  display: flex;
+  justify-content: center;
+  align-items:last baseline;
+}
+
+.circle div[data-lang-key="title"]:hover{
+    background-color: rgba(255, 255, 255, 0.277);
+      backdrop-filter: blur(0.3vw);
+  -webkit-backdrop-filter: blur(0.3);
 }
 
 body[data-lang="hi"] .circle div, body[data-lang="gu"] .circle div{
    -webkit-text-stroke: 0.1vw transparent;
+   text-align: center;
 }
 
 
@@ -552,8 +589,9 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 60% 50%;
+  object-position: center center;
   display: block;
+  margin: 0 auto;
 }
 
 .custom-nav {
@@ -770,8 +808,8 @@ html[lang="Gujarati"] .pranam-img span, .home-btn-1 span {
 
   .pranam-video{
     position: absolute;
-    left: 51%;
-    top: 48.7%;
+    left: 50%;
+    top: 50%;
     background-image: url("./../images/pranam-bg-1.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -787,12 +825,14 @@ html[lang="Gujarati"] .pranam-img span, .home-btn-1 span {
     align-items: center;
 
     overflow: hidden;
-    padding-right: 2.5vw;
+    padding: 0;
   }
 .pranam-video video {
     width: 90%;
     height: 83%;
     object-fit: cover;
+    object-position: center center;
+    margin: 0 auto;
 
     /* Very light feather on ALL edges */
     -webkit-mask-image:

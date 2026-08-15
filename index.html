@@ -10,8 +10,8 @@
 
 <body>
   <div class="circle" id="introCircle">
-    <div data-lang-key="title"></div>
-    <button id="startBtn">Click</button>
+    <img class="boy" src="./assets/images/boy.png" alt="">
+    <div data-lang-key="title" id="startBtn"></div>
   </div>
 
   <div class="language-container">
@@ -38,7 +38,7 @@
         <div class="topic-border">
           <a href="what-to-do.html" class="topic">
 
-            <img src="./assets/images/H1.png" alt="">
+           <video src="./assets/videos/2-3.mp4" muted playsinline loop autoplay></video>
           </a>
         </div>
         <span data-lang-key="title-1"></span>
@@ -50,7 +50,7 @@
         <div class="topic-border">
           <a href="what-not-to-do.html" class="topic">
 
-            <img src="./assets/images/H2.png" alt="">
+             <video src="./assets/videos/2-6.mp4" muted playsinline loop autoplay></video>
           </a>
         </div>
         <span data-lang-key="title-2"></span>
@@ -68,10 +68,11 @@
   <audio id="gujAudio" src="./assets/audio/Guj.mpeg"></audio>
 
   <script src="./assets/js/app.js"></script>
-  <script src="./assets/js/djp.js"></script>
+  <!-- <script src="./assets/js/djp.js"></script> -->
 
   <script>
     const introCircle = document.getElementById("introCircle");
+    const boy = document.querySelector(".boy");
     const main = document.querySelector(".main");
     const startBtn = document.getElementById("startBtn");
     const homeBtn = document.querySelector(".home-btn");
@@ -103,6 +104,8 @@
       introCircle.style.pointerEvents = "auto";
       introCircle.classList.remove("expand");
 
+      if (boy) boy.style.display = "";
+
       void introCircle.offsetWidth;
     }
 
@@ -111,6 +114,8 @@
 
       resetIntroState();
       main.classList.remove("show");
+
+      if (boy) boy.style.display = "none";
 
       void main.offsetWidth;
 
