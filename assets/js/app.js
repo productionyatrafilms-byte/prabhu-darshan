@@ -99,13 +99,9 @@ btnHi.addEventListener("click", () => applyLanguage("Hindi"));
 btnGu.addEventListener("click", () => applyLanguage("Gujarati"));
 
 // load translations + apply saved language
-fetch("./assets/json/data.json", { cache: "no-store" })
-  .then((res) => res.json())
-  .then((data) => {
-    translations = data;
+translations = typeof data !== "undefined" ? data : {};
 
-    const savedLang = localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
-    applyLanguage(savedLang);
+const savedLang = localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
+applyLanguage(savedLang);
 
-    setActivePage();
-  });
+setActivePage();
