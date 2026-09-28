@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: "ITFDevanagari";
-  src: url("../../fonts/NotoSansGujarati-Bold.ttf") format("truetype");
+  src: url("../../fonts/ITFDevanagari.ttc") format("truetype");
   font-weight: 700!important;
   font-style: normal;
   font-display: swap;
@@ -31,6 +31,14 @@
   font-family: "NotoSansGujaratiRegular";
   src: url("../../fonts/NotoSansGujarati-Regular.ttf") format("truetype");
   font-weight: 400!important;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NotoSansGujaratiBold";
+  src: url("../../fonts/NotoSansGujarati-Bold.ttf") format("truetype");
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
