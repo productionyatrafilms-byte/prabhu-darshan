@@ -68,29 +68,29 @@
           <div class="image-swiper swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <video style="width: 145%; padding-right: 8.5vw;" src="./assets/videos/2-1.mp4" muted playsinline loop></video>
+                <video style="width: 145%; padding-right: 8.5vw;" src="./assets/videos/2-1.mp4" muted playsinline loop preload="auto"></video>
               </div>
               <div class="swiper-slide">
-                <video src="./assets/videos/2-2.mp4" muted playsinline loop></video>
-              </div>
-
-              <div class="swiper-slide">
-                <video src="./assets/videos/2-3.mp4" muted playsinline loop></video>
+                <video src="./assets/videos/2-2.mp4" muted playsinline loop preload="none"></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/2-4.mp4" muted playsinline loop></video>
-              </div>
-              <div class="swiper-slide">
-                <video src="./assets/videos/2-5.mp4" muted loop playsinline></video>
+                <video src="./assets/videos/2-3.mp4" muted playsinline loop preload="none"></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/2-6.mp4" muted loop playsinline></video>
+                <video src="./assets/videos/2-4.mp4" muted playsinline loop preload="none"></video>
+              </div>
+              <div class="swiper-slide">
+                <video src="./assets/videos/2-5.mp4" muted loop playsinline preload="none"></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/2-7.mp4" muted loop playsinline></video>
+                <video src="./assets/videos/2-6.mp4" muted loop playsinline preload="none"></video>
+              </div>
+
+              <div class="swiper-slide">
+                <video src="./assets/videos/2-7.mp4" muted loop playsinline preload="none"></video>
               </div>
 
             </div>
@@ -110,7 +110,7 @@
 
       <div class="right-home-container">
         <div class="design design-1">
-          <img src="./assets/images/Group 9.png" alt="" />
+          <img src="./assets/images/Group-9.png" alt="" />
         </div>
 
         <div class="text-swiper swiper">
@@ -160,7 +160,7 @@
         </div>
 
         <div class="design design-1">
-          <img src="./assets/images/Group 8.png" alt="" />
+          <img src="./assets/images/Group-8.png" alt="" />
         </div>
 
         <div class="pages">
@@ -185,7 +185,6 @@
     <script src="./assets/js/data.js"></script>
 <script src="./assets/js/app.js"></script>
     <script src="./assets/js/swiper.js"></script>
-  <script src="./assets/js/djp.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -278,6 +277,7 @@
 
           if (index === swiper.activeIndex) {
             // Active slide -> play its video
+            video.preload = "auto";
             if (video.paused) {
               const playPromise = video.play();
               if (playPromise !== undefined) {
@@ -288,6 +288,7 @@
             }
           } else {
             // Inactive slide -> pause and reset its video
+            video.preload = "none";
             if (!video.paused) {
               video.pause();
             }
