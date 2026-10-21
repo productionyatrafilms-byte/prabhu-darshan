@@ -68,6 +68,15 @@ body {
   overflow-x: hidden;
 }
 
+/* hide the scrollbar visually; the page still scrolls with wheel / touch / keys */
+html {
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   width: 100vw !important;
   height: 100%;

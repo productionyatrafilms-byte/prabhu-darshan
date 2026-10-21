@@ -6,6 +6,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-lang-key="title"></title>
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <style>
+    /* "no" sign over the 2nd point's video: starts large, then scales down to the centre of the video once the cards have slid in */
+    .topics .topic .ban-sign {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 34%;
+      height: auto;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      clip-path: circle(48% at 50% 50%);
+    }
+
+    .main.show .topics .topic .ban-sign {
+      animation: banScaleDown 3s cubic-bezier(0.2, 0.8, 0.3, 1) 2.6s infinite both;
+    }
+
+    @keyframes banScaleDown {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(4);
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      85% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -51,6 +95,7 @@
           <a href="what-not-to-do.html" class="topic">
 
              <video src="./assets/videos/2-6.mp4" muted playsinline loop autoplay preload="auto"></video>
+             <img class="ban-sign" src="./assets/images/ban.png" alt="" />
           </a>
         </div>
         <span data-lang-key="title-2"></span>
