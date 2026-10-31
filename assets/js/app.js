@@ -50,6 +50,7 @@ function setActiveButton(activeBtn) {
 
 // apply language
 function applyLanguage(lang) {
+  if (!translations[lang]) lang = DEFAULT_LANG;
   const langData = translations[lang];
   if (!langData) return;
 
@@ -101,7 +102,8 @@ btnGu.addEventListener("click", () => applyLanguage("Gujarati"));
 // load translations + apply saved language
 translations = typeof data !== "undefined" ? data : {};
 
-const savedLang = localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
+const storedLang = localStorage.getItem(LANG_KEY);
+const savedLang = translations[storedLang] ? storedLang : DEFAULT_LANG;
 applyLanguage(savedLang);
 
 setActivePage();
