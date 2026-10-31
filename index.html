@@ -21,32 +21,24 @@
     }
 
     .main.show .topics .topic .ban-sign {
-      animation: banScaleDown 3s cubic-bezier(0.2, 0.8, 0.3, 1) 2.6s infinite both;
+      animation: banScaleDown 3s ease-in-out 2.6s infinite both;
     }
 
     @keyframes banScaleDown {
       0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(4);
       }
 
-      15% {
+      25% {
         opacity: 1;
       }
 
-      50% {
+      75% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-
-      85% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
       }
 
       100% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(1);
       }
     }
   </style>
